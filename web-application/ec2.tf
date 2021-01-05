@@ -2,17 +2,12 @@ resource "aws_instance" "web-application"  {
     ami                          = "ami-03368e982f317ae48"
     associate_public_ip_address  = true
     availability_zone            = "us-east-1d"
-    cpu_core_count               = 1
-    cpu_threads_per_core         = 1
     disable_api_termination      = false
     ebs_optimized                = false
     get_password_data            = false
     hibernation                  = false
     instance_type                = "t2.micro"
     key_name                     = "web-application-key"
-    security_groups              = [
-        aws_security_group.web-application-http.name,
-    ]
     source_dest_check            = true
     subnet_id                    = "subnet-001f172e"
     tags                         = {

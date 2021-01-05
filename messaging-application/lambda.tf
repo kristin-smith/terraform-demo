@@ -1,5 +1,6 @@
 resource "aws_lambda_function" "morning_reminder_lambda" {
     function_name                  = "arn:aws:lambda:us-east-1:902238724981:function:morning-alarm"
+    filename                       = "messaging-application/lambda-function.js.zip"
     handler                        = "index.handler"
     layers                         = []
     memory_size                    = 128
