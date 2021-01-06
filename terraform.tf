@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-demo-reorganizing-repos"
-    key    = "messaging-repo"
+    key    = "unified-again-repo-3"
     region = "us-east-1"
   }
 }
