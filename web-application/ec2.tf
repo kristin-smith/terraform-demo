@@ -7,7 +7,7 @@ resource "aws_instance" "web-application"  {
     get_password_data            = false
     hibernation                  = false
     instance_type                = "t2.micro"
-    key_name                     = "web-application-key"
+    key_name                     = "terraform-demo-2021"
     source_dest_check            = true
     subnet_id                    = "subnet-001f172e"
     tags                         = {
@@ -43,7 +43,7 @@ resource "aws_instance" "web-application"  {
 }
 
 resource "aws_key_pair" "demo-key" {
-    key_name    = "web-application-key"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCYoaAek0Jz4TbsQTNHR+Kn6BCUmyHiX9AgMPReH7zcKAbOID+oKhSh3iwptzoOPrkprrO8fPTfjOgPgH68FYPzJc6UFAQxgpntuelBgAMQPX4VyoGlWhyGLqzoUy+Bsr8eXu7saO/UIWi3n5QlaD5QAa4Vf7A6IUcg+yNtVujR94BGHCbKaOUZRJZ7RmaQCUnpdvQ6YfHSNjBdm1/Hbkbul4qNho9OKVoMG8x+jeUK8xAF/sDo2kxY9ccIIHCf81uN54czZm9BBsOHasTEUgVuOlC5/fCwcBRRmc6ofkaLF9TICf+bYpDxqIkOGIixc1xUNDeDAtss/xOMWphDK7+d"
+    key_name    = "terraform-demo-2021"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7/+NRLhpD3m2S+NwyfVvKc6TFixNawS92GdQzxUQD5feJODfVrWt33w6zh77awwxjOFDQoJ4o4XTfUFdpEqNysMyxgcnW+qzpxPg2xEcl6AnwUsMku6H7TsoZfYX7wa0IbyTPfJuSY7CcQCz4AiiNU1WzBbK9MxSfR2Kp/esxPwkwicoeWAqAJ3UzyBWVmD91nvj7V+1ZE2lzMdvwc1tzOtiUUbrv6AGdMl5C3AiS+S1m5QcnJS9dhXvYQWB3cF3JB5oAfiUfvjeRDqD0iT4l0oq6n6EXnkP/RooXa2pee9StVHoYe4Rgwmwhzi6xSwlf/ceKGiyLrFmmBxvGxGLoKeTPNHA7hF0OF5eiF1KI2yy/5WPt5HSFXnj9lmod2xcBdCfUl0F1d60ZlQw7KMUzI8Y5hRobbBPCuyvCY8VAPFXskCNHXXqhD/4j61qa0E1iOpKly/z9M0XDpdJCIsaLZ1Eej+z3iucNHb+JHnRMQV6xKlG66rUzULq1CTVbQ/8= noname"
     tags        = {}
 }

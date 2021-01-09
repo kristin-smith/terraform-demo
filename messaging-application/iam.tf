@@ -15,7 +15,7 @@ resource "aws_iam_role" "iam_for_lambda" {
     )
     force_detach_policies = false
     max_session_duration  = 3600
-    name                  = "morning-alarm-role-45cvom0x"
+    name                  = "morning-alarm-role"
     path                  = "/service-role/"
     tags                  = {}
 }
