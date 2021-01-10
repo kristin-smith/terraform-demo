@@ -17,5 +17,7 @@ resource "aws_iam_role" "iam_for_lambda" {
     max_session_duration  = 3600
     name                  = "morning-alarm-role"
     path                  = "/service-role/"
-    tags                  = {}
+    tags                = {
+        Name = "messaging-application"
+    }
 }

@@ -45,5 +45,7 @@ resource "aws_instance" "web-application"  {
 resource "aws_key_pair" "demo-key" {
     key_name    = "terraform-demo-2021"
     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7/+NRLhpD3m2S+NwyfVvKc6TFixNawS92GdQzxUQD5feJODfVrWt33w6zh77awwxjOFDQoJ4o4XTfUFdpEqNysMyxgcnW+qzpxPg2xEcl6AnwUsMku6H7TsoZfYX7wa0IbyTPfJuSY7CcQCz4AiiNU1WzBbK9MxSfR2Kp/esxPwkwicoeWAqAJ3UzyBWVmD91nvj7V+1ZE2lzMdvwc1tzOtiUUbrv6AGdMl5C3AiS+S1m5QcnJS9dhXvYQWB3cF3JB5oAfiUfvjeRDqD0iT4l0oq6n6EXnkP/RooXa2pee9StVHoYe4Rgwmwhzi6xSwlf/ceKGiyLrFmmBxvGxGLoKeTPNHA7hF0OF5eiF1KI2yy/5WPt5HSFXnj9lmod2xcBdCfUl0F1d60ZlQw7KMUzI8Y5hRobbBPCuyvCY8VAPFXskCNHXXqhD/4j61qa0E1iOpKly/z9M0XDpdJCIsaLZ1Eej+z3iucNHb+JHnRMQV6xKlG66rUzULq1CTVbQ/8= noname"
-    tags        = {}
+    tags                = {
+        Name = "web-application"
+    }
 }

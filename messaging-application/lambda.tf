@@ -7,7 +7,9 @@ resource "aws_lambda_function" "morning_reminder_lambda" {
     reserved_concurrent_executions = -1
     role                           = aws_iam_role.iam_for_lambda.arn
     runtime                        = "nodejs12.x"
-    tags                           = {}
+    tags                = {
+        Name = "messaging-application"
+    }
     timeout                        = 3
 
     timeouts {}

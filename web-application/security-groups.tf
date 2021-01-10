@@ -45,8 +45,10 @@ resource "aws_security_group" "web-application-http" {
     }
 
     name        = "web-application-sg"
-    tags        = {}
-    vpc_id      = aws_default_vpc.default.id
+    tags                = {
+        Name = "web-application"
+    }
+    vpc_id      = data.aws_vpc.default.id
 
     timeouts {}
 }
