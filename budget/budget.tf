@@ -1,6 +1,8 @@
 resource "aws_budgets_budget" "messaging" {
     budget_type       = "COST"
-    cost_filters      = {}
+    cost_filters      = {
+        "TagKeyValue" = "user:Name$messaging-application"
+    }
     limit_amount      = "20.0"
     limit_unit        = "USD"
     name              = "Monthly messaging budget"

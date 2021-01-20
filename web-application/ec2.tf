@@ -36,7 +36,6 @@ resource "aws_instance" "web-application"  {
         encrypted             = false
         iops                  = 300
         volume_size           = 100
-        volume_type           = "gp2"
     }
 
     timeouts {}
