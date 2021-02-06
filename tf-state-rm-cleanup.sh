@@ -2,7 +2,7 @@
 ##Object: given a module or list of modules by the user, remove all resources from the terraform state except for that module's resources
 echo "Searching for current project modules"
 terraform state list > state-list.txt
-cat state-list.txt | awk -F "." '{print $2}'> module-list.txt
+cat state-list.txt | grep  module | awk -F "." '{print $2}'> module-list.txt
 echo "These are the current modules in the project"
 
 modules=()
@@ -47,14 +47,14 @@ done
 
 echo "You'd like to remove module.${module} from this state file. Enter yes/no to continue:"
 read validateModule
-if [[ ! $validateModule = "yes" ]];
+if [[ ! $validateModule == "yes" ]];
     then
       echo "Module not confirmed, ending script now"
       exit
     else
       echo "Will remove all resources from the Terraform state file belonging to module.${module}. Enter Y to proceed:"
       read validateRemoval
-      if [[ ! $validateModule = "yes" ]];
+      if [[ ! $validateRemoval == "Y" ]];
         then
           echo "Removal cancelled, ending script now"
           exit

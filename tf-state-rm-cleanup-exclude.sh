@@ -1,11 +1,10 @@
 #!/bin/bash
 ##Object: given a module or list of modules by the user, remove all resources from the terraform state except for that module's resources
-echo "Searching for current project modules"
-terraform state list > state-list.txt
-cat state-list.txt | awk -F "." '{print $2}'> module-list.txt
-echo "These are the current modules in the project"
 
-modules=()
+cleanup () {
+  [[ -f module-list.txt ]] && rm module-list.txt
+  [[ -f non-modularized-resources.txt ]] && rm non-modularized-resources.txt
+}
 
 modulesContainsModule () {
   contains=""
@@ -32,8 +31,22 @@ removeResourcesNotInModule () {
     fi
   done < state-list.txt
   echo "these are the modules remaining:"
-  terraform state list
+  terraform state list | grep module | awk -F "." '{print $2}'
 }
+
+cleanup
+echo "Searching for current project modules"
+terraform state list > state-list.txt
+while read resource; do
+  if [[ $(echo $resource | grep module | wc -l) -gt 0 ]]; then
+      echo $resource | awk -F "." '{print $2}' >> module-list.txt
+      else
+        echo "  " $resource >> non-modularized-resources.txt
+  fi
+done < state-list.txt
+
+echo "These are the current modules in the project"
+modules=()
 
 findUniqueModules
 echo "Which module would you like to keep?"
@@ -52,13 +65,17 @@ if [[ ! $validateModule = "yes" ]];
       echo "Module not confirmed, ending script now"
       exit
     else
-      echo "Will remove all resources from the Terraform state file except for resources belonging to module.${module}. Enter Y to proceed:"
+      echo "Will remove all resources from the Terraform state file except for resources belonging to module.${module} including the follow non-modularized resources."
+      cat non-modularized-resources.txt
+      echo "Enter Y to proceed:"
       read validateRemoval
-      if [[ ! $validateModule = "yes" ]];
+      if [[ ! $validateRemoval == "Y" ]];
         then
           echo "Removal cancelled, ending script now"
+          cleanup
           exit
         else
           removeResourcesNotInModule $module
+          cleanup
       fi
 fi
