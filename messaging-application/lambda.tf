@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "morning_reminder_lambda" {
     function_name                  = "morning-alarm"
     filename                       = "messaging-application/lambda-function.js.zip"
-    handler                        = "index.handler"
+    handler                        = "lambda-function.handler"
     layers                         = []
     memory_size                    = 128
     reserved_concurrent_executions = -1

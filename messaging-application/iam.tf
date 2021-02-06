@@ -21,3 +21,8 @@ resource "aws_iam_role" "iam_for_lambda" {
         Name = "messaging-application"
     }
 }
+
+resource "aws_iam_role_policy_attachment" "lambda-execution" {
+  role = aws_iam_role.iam_for_lambda.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}

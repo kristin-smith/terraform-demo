@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_event_rule" "morning_reminder" {
     description         = "send a good morning text every day"
-    is_enabled          = false
+    is_enabled          = true
     name                = "morning-alarm"
     schedule_expression = "cron(0 6 * * ? *)"
     tags                = {
