@@ -4,6 +4,7 @@
 cleanup () {
   [[ -f module-list.txt ]] && rm module-list.txt
   [[ -f non-modularized-resources.txt ]] && rm non-modularized-resources.txt
+  [[ -f state-list.txt ]] && rm state-list.txt
 }
 
 modulesContainsModule () {
