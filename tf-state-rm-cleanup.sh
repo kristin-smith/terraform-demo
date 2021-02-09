@@ -1,5 +1,5 @@
 #!/bin/bash
-##Object: given a module or list of modules by the user, remove all resources from the terraform state except for that module's resources
+##Object: given a module or list of modules by the user, remove all of that module's resources from the terraform state
 
 cleanup () {
   [[ -f module-list.txt ]] && rm module-list.txt
